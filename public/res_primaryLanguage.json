@@ -1,0 +1,148 @@
+{
+    "basic_info": {
+      "description_header": "Hello world",
+      "description": "My name is Adrian. I am currently in my 4th year of studies, pursuing a degree in Computer Engineering. From a very young age, I have had a passion for technology, and it is this passion that has driven me to where I am today. Over the years, I have gained valuable experience in the technology industry, working at well-known companies like El Corte Ingles and IBM. These experiences have given me the chance to develop a wide range of skills in software development and training, as well as a deeper understanding of the industry as a whole. As someone who is always eager to stay on top of the latest trends and advancements in technology, I have a particular interest in cybersecurity, blockchain, and artificial intelligence. These fields are constantly evolving and pushing the boundaries of what we thought was possible, and I am excited to be a part of that journey. ",
+      "section_name": {
+        "about": "About me",
+        "projects": "Projects",
+        "skills": "Skills",
+        "experience": "Experience"
+      }
+    },
+    "projects": [
+      {
+        "title": "Password Audit",
+        "startDate": "2022",
+        "description": "I have been using Hashcat, a powerful password cracking tool that can be used on Windows, MAC OS, and Linux, for several years now. Using my experience and expertise, I have developed a strong foundation in password cracking techniques and methodology. One of my preferred approaches involves using different protocols that require a dictionary of commonly used passwords. By analyzing the results of each protocol, I am able to choose the best one for each scenario, thereby improving the efficiency and effectiveness of the password cracking process. As a result of my hard work and dedication, I have achieved significant success in the field of password cracking. I have conducted successful password cracking exercises in a variety of scenarios, and my results speak for themselves.",
+        "images": [
+          "images/portfolio/animal-shelter/p1.jpg",
+          "images/portfolio/animal-shelter/p2.jpg"
+        ],
+        "url": "",
+        "technologies": [
+          {
+            "class": "devicon-linux-plain",
+            "name": "Linux"
+          },
+          {
+            "class": "devicon-bash-plain",
+            "name": "Bash"
+          }
+          
+        ]
+      },
+      {
+        "title": "Poker",
+        "startDate": "2017 - Present",
+        "description": "I have spent the last five years studying the math behind poker as a hobby. It has been an incredibly rewarding experience, and I have learned a lot about the game and its underlying principles. During this time, I have also put my knowledge to the test by using computational power to create my own statistics chart for 6 people tables. This chart has been incredibly useful in helping me make better decisions during games, and I have seen a significant improvement in my performance as a result. My hard work and dedication to the game have paid off, and I have achieved some impressive results. I have earned several online badges, which is a testament to my skills and expertise. But perhaps my most significant achievement came when I won a face-to-face trophy at one of the most important casinos in Spain. Through my experiences, I have come to appreciate the importance of hard work, dedication, and persistence. These are qualities that have served me well in my pursuit of excellence in the game of poker, and I am excited to continue honing my skills in the years to come.",
+        "images": [
+          "images/portfolio/photography/p5.jpg",
+          "images/portfolio/photography/p6.jpg",
+          "images/portfolio/photography/p7.jpg",
+          "images/portfolio/photography/p8.jpg",
+          "images/portfolio/photography/p9.jpg",
+          "images/portfolio/photography/p10.jpg"
+        ],
+        
+        "technologies": [
+          
+        ]
+      },
+      {
+        "title": "Skiing",
+        "startDate": "2003 - Present",
+        "description": "I've skiied every year since I was 4 years old, one of my favourite sports to practice with friends, family and by myself.",
+        "images": [          
+          "images/portfolio/adventure/fium.jpg",
+          "images/portfolio/adventure/p1.jpg",
+          "images/portfolio/adventure/p2.jpg",
+          "images/portfolio/adventure/p3.jpg"
+        ],
+        
+        "technologies": [
+          
+        ]
+      }
+    ], 
+    "experience": [
+      {
+        "company": "Computer engineering",
+        "title": "Alcala de Henares University",
+        "years": "10.2019 - present",
+        "mainTech": [
+          "Computer Science"
+        ],
+        "technologies": [
+          "Python",
+          "Bash",
+          "JavaScript",
+          "ASM",
+          "Kali",
+          "Java",
+          "C++",
+          "C#"
+        ]
+      },
+      {
+        "company": "Artificial Intelligence with Python",
+        "title": "Harvard Online University",
+        "years": "07.2021 - 09.2021",
+        "mainTech": [
+          "AI"
+        ],
+        "technologies": [
+          "Python"
+        ]
+      },
+      {
+        "company": "Internship",
+        "title": "IBM",
+        "years": "06.2021 - 06.2022",
+        "mainTech": [
+          "Tech Sales",
+          "Development"
+        ],
+        "technologies": [
+          "Python",
+          "Openshift",
+          "Golang",
+          "Docker"
+        ]
+      },
+      {
+        "company": "Cyber Security Course",
+        "title": "Polytechnic College UAH",
+        "years": "01.2022 - 06.2022",
+        "mainTech": [
+          "Pentesting",
+          "Hash cracking",
+          "Password Audit",
+          "Blockchain"
+          
+        ],
+        "technologies": [
+          "Python",
+          "Hashcat",
+          "Bash",
+          "Kali"
+        ]
+      },
+      {
+        "company": "Software",
+        "title": "IBM",
+        "years": "06.2022 - present",
+        "mainTech": [
+          "Expert Labs",
+          "Software dev.",
+          "AI"
+          
+        ],
+        "technologies": [
+          "Python",
+          "Watson Assistant",
+          "Aspera",
+          "PHP"
+        ]
+      }
+    ]
+  }

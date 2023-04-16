@@ -1,0 +1,153 @@
+{
+    "basic_info": {
+      "description_header": "Hola mundo",
+      "description": "Mi nombre es Adrián. Actualmente estoy en mi cuarto año de estudios, persiguiendo una licenciatura en Ingeniería en Computación. Desde muy joven, he tenido una pasión por la tecnología, y es esta pasión la que me ha llevado hasta donde estoy hoy en día. A lo largo de los años, he adquirido una valiosa experiencia en la industria tecnológica, trabajando en empresas reconocidas como El Corte Inglés e IBM. Estas experiencias me han brindado la oportunidad de desarrollar una amplia gama de habilidades en desarrollo de software y capacitación, así como una comprensión más profunda de la industria en su conjunto. Como alguien que siempre está ansioso por mantenerse al tanto de las últimas tendencias y avances en tecnología, tengo un interés particular en ciberseguridad, blockchain e inteligencia artificial. Estos campos están en constante evolución y empujando los límites de lo que pensábamos que era posible, y estoy emocionado de ser parte de ese viaje.",
+      "section_name": {
+        "about": "Sobre mi",
+        "projects": "Proyectos",
+        "skills": "Habilidades",
+        "experience": "Experiencia"
+      }
+    },
+    "projects": [
+      {
+        "title": "Auditoria de contraseña",
+        "startDate": "2020",
+        "description": "He estado utilizando Hashcat, una poderosa herramienta de crackeo de contraseñas que se puede utilizar en Windows, MAC OS y Linux, durante varios años. Con base en mi experiencia y conocimientos, he desarrollado una sólida base en técnicas y metodología de crackeo de contraseñas. Uno de los enfoques que prefiero implica el uso de diferentes protocolos que requieren un diccionario de contraseñas comunes. Analizando los resultados de cada protocolo, puedo elegir el mejor para cada escenario, mejorando así la eficiencia y efectividad del proceso de crackeo de contraseñas. Como resultado de mi arduo trabajo y dedicación, he logrado un éxito significativo en el campo del crackeo de contraseñas. He llevado a cabo exitosos ejercicios de crackeo de contraseñas en una variedad de escenarios, y mis resultados hablan por sí mismos.",
+        "images": [
+          "images/portfolio/animal-shelter/p1.jpg",
+          "images/portfolio/animal-shelter/p2.jpg"
+        ],
+        "url": "",
+        "technologies": [
+          {
+            "class": "devicon-linux-plain",
+            "name": "Linux"
+          },
+          {
+            "class": "devicon-bash-plain",
+            "name": "Bash"
+          }
+        ]
+      },
+      {
+        "title": "Poker",
+        "startDate": "2017 - Presente",
+        "description": "Durante los últimos cinco años, he dedicado mi tiempo a estudiar matemáticas aplicadas al póker como un hobby. Ha sido una experiencia increíblemente gratificante, y he aprendido mucho sobre el juego y sus principios subyacentes. Durante este tiempo, también he puesto a prueba mis conocimientos utilizando la potencia computacional para crear mi propia tabla de estadísticas para mesas de 6 personas. Esta tabla ha sido increíblemente útil para tomar decisiones más acertadas durante las partidas, y he visto una mejora significativa en mi rendimiento como resultado. Mi arduo trabajo y dedicación al juego han dado sus frutos, y he logrado algunos resultados impresionantes. He obtenido varios distintivos en línea, lo cual es un testimonio de mis habilidades y experiencia. Pero tal vez mi logro más significativo fue cuando gané un trofeo en persona en uno de los casinos más importantes de España. A través de mis experiencias, he aprendido a valorar la importancia del trabajo duro, la dedicación y la persistencia. Estas son cualidades que me han servido bien en mi búsqueda de la excelencia en el juego del póker, y estoy emocionado de seguir puliendo mis habilidades en los años venideros.",
+        "images": [
+          "images/portfolio/photography/p5.jpg",
+          "images/portfolio/photography/p6.jpg",
+          "images/portfolio/photography/p7.jpg",
+          "images/portfolio/photography/p8.jpg",
+          "images/portfolio/photography/p9.jpg",
+          "images/portfolio/photography/p10.jpg"
+        ],
+        "url": "https://github.com",
+        "technologies": [
+          {
+            "class": "devicon-react-original",
+            "name": "React"
+          },
+          {
+            "class": "devicon-javascript-plain",
+            "name": "JavaScript"
+          }
+        ]
+      },
+      {
+        "title": "Esqui",
+        "startDate": "2003 - Present",
+        "description": "He esquiado cada año desde que tengo 4 años, uno de mis deportes favoritos para practicar con amigos, familia y en solitario.",
+        "images": [          
+          "images/portfolio/adventure/fium.jpg",
+          "images/portfolio/adventure/p1.jpg",
+          "images/portfolio/adventure/p2.jpg",
+          "images/portfolio/adventure/p3.jpg"
+        ],
+        "url": "https://github.com",
+        "technologies": [
+          
+        ]
+      }
+    ],
+    "experience": [
+      {
+        "company": "Ingenieria de Computadores",
+        "title": "Universidad de Alcala de Henares",
+        "years": "10.2019 - presente",
+        "mainTech": [
+          "Ciencia de los computadores"
+        ],
+        "technologies": [
+          "Python",
+          "Bash",
+          "JavaScript",
+          "ASM",
+          "Kali",
+          "Java",
+          "C++",
+          "C#"
+        ]
+      },
+      {
+        "company": "Artificial Intelligence con Python",
+        "title": "Harvard Online University",
+        "years": "07.2021 - 09.2021",
+        "mainTech": [
+          "IA"
+        ],
+        "technologies": [
+          "Python"
+        ]
+      },
+      {
+        "company": "Practicas",
+        "title": "IBM",
+        "years": "06.2021 - 06.2022",
+        "mainTech": [
+          "Ventas de Software",
+          "Desarrollo"
+        ],
+        "technologies": [
+          "Python",
+          "Openshift",
+          "Golang",
+          "Docker"
+        ]
+      },
+      {
+        "company": "Curso de Ciber-Seguridad",
+        "title": "Escuela Politecnica UAH",
+        "years": "01.2022 - 06.2022",
+        "mainTech": [
+          "Pentesting",
+          "Hash cracking",
+          "Auditoria de Contraseñas",
+          "Blockchain"
+        ],
+        "technologies": [
+          "Python",
+          "Hashcat",
+          "Bash",
+          "Kali"
+        ]
+      },
+      {
+        "company": "Software",
+        "title": "IBM",
+        "years": "06.2022 - present",
+        "mainTech": [
+          "Expert Labs",
+          "Software dev.",
+          "AI"
+          
+        ],
+        "technologies": [
+          "Python",
+          "PHP",
+          "Watson Assistant",
+          "Aspera"
+        ]
+      }
+    ]
+  }
