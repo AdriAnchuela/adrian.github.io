@@ -415,12 +415,30 @@ footer span { color:var(--accent); }
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   .about-grid,.edu-grid,.exp-grid,.contact-row { grid-template-columns:1fr; }
-  .project-row { grid-template-columns:50px 1fr; }
+  .project-row { grid-template-columns:50px 1fr; gap:1.5rem; }
   .project-row.featured { grid-template-columns:50px 1fr; }
   .proj-arrow { display:none; }
-  nav { padding:1.2rem 1.5rem; }
+  nav { padding:1rem 1.25rem; }
+  .nav-right { gap:1.2rem; }
+  .nav-link { display:none; }
+  .nav-logo { font-size:.68rem; }
   #hero,.section,.section-full { padding-left:1.5rem; padding-right:1.5rem; }
+  .contact-inner { padding-left:1.5rem; padding-right:1.5rem; }
+  footer { padding-left:1.5rem; padding-right:1.5rem; flex-direction:column; gap:.5rem; align-items:flex-start; }
   .side-links { display:none; }
+  .hero-name { letter-spacing:-.03em; }
+  .hero-bottom { flex-direction:column; align-items:flex-start; }
+  .hero-actions { width:100%; }
+  .hero-meta { align-items:flex-start; }
+  .section { padding:5rem 1.5rem; }
+  .section-full { padding:5rem 1.5rem; }
+  .section-full .inner { padding:0; }
+  .contact-cta { font-size:clamp(2rem,11vw,4rem); }
+}
+@media(max-width:520px){
+  .marquee-item { padding:0 1.4rem; font-size:.65rem; }
+  .proj-title { font-size:1.4rem; }
+  .exp-role { font-size:1.5rem; }
 }
 </style>
 </head>
@@ -893,10 +911,16 @@ function App(){
                 &nbsp;&nbsp;<span className="str">"focus"</span>: [<span className="str">"AI/ML"</span>, <span className="str">"Cloud"</span>, <span className="str">"Full-Stack"</span>],<br/>
                 &nbsp;&nbsp;<span className="str">"stack"</span>: [<br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;<span className="str">"Python"</span>, <span className="str">"Java"</span>, <span className="str">"Vue"</span>,<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="str">"OpenShift"</span>, <span className="str">"Watsonx"</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="str">"OpenShift"</span>, <span className="str">"SQL"</span><br/>
+                &nbsp;&nbsp;],<br/>
+                &nbsp;&nbsp;<span className="str">"ai"</span>: [<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="str">"RAG"</span>, <span className="str">"LLMs"</span>, <span className="str">"LangChain"</span>,<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="str">"Watsonx"</span>, <span className="str">"Vector DBs"</span>,<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="str">"Fine-tuning"</span>, <span className="str">"DPO"</span>,<br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="str">"TensorFlow"</span>, <span className="str">"NLP"</span><br/>
                 &nbsp;&nbsp;],<br/>
                 &nbsp;&nbsp;<span className="str">"interests"</span>: [<br/>
-                &nbsp;&nbsp;&nbsp;&nbsp;<span className="str">"AI/ML"</span>, <span className="str">"Finance"</span>, <span className="str">"Sport"</span><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="str">"AI/ML"</span>, <span className="str">"Finance"</span>, <span className="str">"Sports"</span><br/>
                 &nbsp;&nbsp;],<br/>
                 &nbsp;&nbsp;<span className="cm">// always building, always learning</span><br/>
                 {'}'};
