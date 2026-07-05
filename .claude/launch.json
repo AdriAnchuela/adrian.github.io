@@ -3,8 +3,13 @@
   "configurations": [
     {
       "name": "portfolio-dev",
-      "runtimeExecutable": "/opt/homebrew/opt/node/bin/npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeExecutable": "/opt/homebrew/opt/node/bin/node",
+      "runtimeArgs": [
+        "/Users/adrian/Documents/Portfolio/node_modules/astro/bin/astro.mjs",
+        "dev",
+        "--root",
+        "/Users/adrian/Documents/Portfolio"
+      ],
       "port": 4321
     }
   ]
