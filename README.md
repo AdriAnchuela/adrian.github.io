@@ -1,6 +1,6 @@
 # anchuela.com — Portfolio
 
-Portfolio personal de Adrián Anchuela. Sitio estático construido con [Astro](https://astro.build), bilingüe (EN en `/`, ES en `/es/`), con tema claro/oscuro y desplegable en GitHub Pages.
+Portfolio personal de Adrián Anchuela. Sitio estático construido con [Astro](https://astro.build), bilingüe (EN en `/`, ES en `/es/`), con dos temas oscuros conmutables (negro azulado/acento menta y negro cálido/acento ámbar) y desplegable en GitHub Pages.
 
 ## Desarrollo
 

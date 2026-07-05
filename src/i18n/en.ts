@@ -14,8 +14,8 @@ export const en = {
     switchTheme: 'Toggle color theme',
   },
   hero: {
-    availability: 'Open to new opportunities',
-    role: 'Data & AI Engineer — IBM',
+    availability: 'Building AI systems at IBM',
+    role: 'Data & AI Engineer',
     name: 'Adrian Anchuela',
     intro:
       'Software engineer in Madrid building AI-driven systems, cloud infrastructure and full-stack applications for global enterprises.',
@@ -25,11 +25,11 @@ export const en = {
   },
   about: {
     kicker: 'About',
-    heading: 'Driven by curiosity, shaped by code.',
+    heading: '$ whoami',
     paragraphs: [
       'I am a computer engineer working at the intersection of full-stack development, cloud infrastructure and machine learning, with a focus on AI systems that hold up in production.',
       'My work ranges from a military-grade AI platform for the Spanish Air Force to high-speed data infrastructure for some of Spain’s largest corporations — RTVE, Telefónica, Iberdrola — and conversational AI for Mapfre and Orange.',
-      'Outside of work I am drawn to quantitative finance, AI research and sport. My final degree project, QuantAI, brought all three together.',
+      'Outside of work I am drawn to quantitative finance, AI research and sport. My final degree project, MLMarketLens, brought all three together.',
     ],
     focusLabel: 'Focus',
     focus: ['AI & Machine Learning', 'Cloud Infrastructure', 'Full-Stack Development'],
@@ -58,6 +58,10 @@ export const en = {
     architectureLabel: 'Architecture & approach',
     featured: 'Featured',
     expand: 'Details',
+    visit: 'Visit project',
+  },
+  clients: {
+    kicker: 'Clients & organisations',
   },
   experience: {
     kicker: 'Experience',

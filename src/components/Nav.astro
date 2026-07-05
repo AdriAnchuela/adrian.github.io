@@ -20,7 +20,7 @@ const links = [
 <header class="nav">
   <div class="container nav-inner">
     <a class="logo" href={localePath(locale)}>
-      Adrian <em>Anchuela</em>
+      adrian<em>.</em>anchuela
     </a>
     <nav class="links" aria-label="Main">
       {links.map((link) => <a href={link.href}>{link.label}</a>)}
@@ -59,15 +59,15 @@ const links = [
   }
 
   .logo {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    letter-spacing: 0.01em;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
     white-space: nowrap;
   }
 
   .logo em {
     color: var(--accent);
-    font-style: italic;
+    font-style: normal;
   }
 
   .links {

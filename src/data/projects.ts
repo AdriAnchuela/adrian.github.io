@@ -39,8 +39,9 @@ export const projects: Project[] = [
     tags: ['RAG', 'Hybrid Search', 'Vector DB', 'LLM Orchestration', 'Predictive Analytics'],
   },
   {
-    slug: 'quantai',
-    title: 'QuantAI',
+    slug: 'mlmarketlens',
+    title: 'MLMarketLens',
+    link: 'https://mlmarketlens.com/',
     client: {
       en: 'Final degree project — UPM',
       es: 'Trabajo de fin de grado — UPM',

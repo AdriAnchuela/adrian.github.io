@@ -6,8 +6,8 @@ export const education: EducationItem[] = [
     school: 'Universidad Politécnica de Alcalá de Henares',
     years: '2019 — 2024',
     note: {
-      en: 'Final project: QuantAI — neural network model for stock and fund trend prediction using NLP and social media sentiment analysis.',
-      es: 'TFG: QuantAI — modelo de redes neuronales para la predicción de tendencias de acciones y fondos usando NLP y análisis de sentimiento en redes sociales.',
+      en: 'Final project: MLMarketLens — neural network model for stock and fund trend prediction using NLP and social media sentiment analysis.',
+      es: 'TFG: MLMarketLens — modelo de redes neuronales para la predicción de tendencias de acciones y fondos usando NLP y análisis de sentimiento en redes sociales.',
     },
   },
   {

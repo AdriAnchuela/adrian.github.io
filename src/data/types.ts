@@ -6,6 +6,7 @@ export interface Project {
   slug: string;
   featured?: boolean;
   title: string;
+  link?: string;
   client: Localized;
   desc: Localized;
   stack: string[];

@@ -1,0 +1,61 @@
+---
+import { useTranslations, type Locale } from '../i18n';
+import { clients } from '../data/clients';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section id="clients" class="section">
+  <div class="container">
+    <p class="kicker reveal">{t.clients.kicker}</p>
+    <div class="grid reveal">
+      {clients.map((client) => (
+        <div class="cell" title={client.name}>
+          <img src={client.logo} alt={client.name} loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line-soft);
+    border-left: 1px solid var(--line-soft);
+  }
+
+  .cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1.6rem, 4vw, 2.8rem) 1.5rem;
+    border-right: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+  }
+
+  .cell img {
+    max-height: clamp(2rem, 4vw, 2.6rem);
+    max-width: 80%;
+    width: auto;
+    filter: grayscale(1) invert(1);
+    opacity: 0.65;
+    transition: opacity 0.25s var(--ease), filter 0.25s var(--ease);
+  }
+
+  .cell:hover img {
+    opacity: 1;
+    filter: grayscale(0) invert(0);
+  }
+
+  @media (max-width: 720px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

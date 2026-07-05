@@ -16,8 +16,8 @@ export const es: UIDict = {
     switchTheme: 'Cambiar tema de color',
   },
   hero: {
-    availability: 'Abierto a nuevas oportunidades',
-    role: 'Data & AI Engineer — IBM',
+    availability: 'Construyendo sistemas de IA en IBM',
+    role: 'Data & AI Engineer',
     name: 'Adrián Anchuela',
     intro:
       'Ingeniero de software en Madrid. Construyo sistemas con IA, infraestructura cloud y aplicaciones full-stack para empresas globales.',
@@ -27,11 +27,11 @@ export const es: UIDict = {
   },
   about: {
     kicker: 'Sobre mí',
-    heading: 'Movido por la curiosidad, forjado en código.',
+    heading: '$ whoami',
     paragraphs: [
       'Soy ingeniero informático y trabajo en la intersección del desarrollo full-stack, la infraestructura cloud y el machine learning, con el foco puesto en sistemas de IA que aguantan en producción.',
       'Mi trabajo va desde una plataforma de IA de grado militar para el Ejército del Aire hasta infraestructura de datos de alta velocidad para algunas de las mayores corporaciones de España — RTVE, Telefónica, Iberdrola — e IA conversacional para Mapfre y Orange.',
-      'Fuera del trabajo me atraen las finanzas cuantitativas, la investigación en IA y el deporte. Mi TFG, QuantAI, unió las tres cosas.',
+      'Fuera del trabajo me atraen las finanzas cuantitativas, la investigación en IA y el deporte. Mi TFG, MLMarketLens, unió las tres cosas.',
     ],
     focusLabel: 'Enfoque',
     focus: ['IA y Machine Learning', 'Infraestructura Cloud', 'Desarrollo Full-Stack'],
@@ -60,6 +60,10 @@ export const es: UIDict = {
     architectureLabel: 'Arquitectura y enfoque',
     featured: 'Destacado',
     expand: 'Detalles',
+    visit: 'Ver proyecto',
+  },
+  clients: {
+    kicker: 'Clientes y organizaciones',
   },
   experience: {
     kicker: 'Experiencia',

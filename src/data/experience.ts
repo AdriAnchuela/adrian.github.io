@@ -67,8 +67,8 @@ export const experience: ExperienceItem[] = [
         es: 'Impartí apoyo académico en matemáticas a estudiantes de primer curso de ingeniería, reforzando el pensamiento analítico y los fundamentos de resolución de problemas.',
       },
       {
-        en: 'Began independent research into quantitative finance and machine learning, laying the groundwork for the QuantAI degree project.',
-        es: 'Inicié investigación independiente en finanzas cuantitativas y machine learning, sentando las bases del proyecto de fin de grado QuantAI.',
+        en: 'Began independent research into quantitative finance and machine learning, laying the groundwork for the MLMarketLens degree project.',
+        es: 'Inicié investigación independiente en finanzas cuantitativas y machine learning, sentando las bases del proyecto de fin de grado MLMarketLens.',
       },
     ],
   },

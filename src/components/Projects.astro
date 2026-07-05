@@ -39,6 +39,11 @@ const t = useTranslations(locale);
                 <div class="tags">
                   {project.tags.map((tag) => <span class="chip chip-accent">{tag}</span>)}
                 </div>
+                {project.link && (
+                  <a class="visit" href={project.link} target="_blank" rel="noopener noreferrer">
+                    {t.work.visit} <span aria-hidden="true">↗</span>
+                  </a>
+                )}
               </div>
               <div>
                 <p class="detail-label">{t.work.architectureLabel}</p>
@@ -224,6 +229,27 @@ const t = useTranslations(locale);
     flex-wrap: wrap;
     gap: 0.4rem;
     margin-top: 1.4rem;
+  }
+
+  .visit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    border-radius: 999px;
+    padding: 0.6rem 1.3rem;
+    transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+  }
+
+  .visit:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
   }
 
   .arch {

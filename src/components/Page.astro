@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Nav from './Nav.astro';
 import Hero from './Hero.astro';
+import Clients from './Clients.astro';
 import About from './About.astro';
 import Projects from './Projects.astro';
 import Experience from './Experience.astro';
@@ -21,6 +22,7 @@ const t = useTranslations(locale);
   <Nav locale={locale} />
   <main>
     <Hero locale={locale} />
+    <Clients locale={locale} />
     <About locale={locale} />
     <Projects locale={locale} />
     <Experience locale={locale} />
