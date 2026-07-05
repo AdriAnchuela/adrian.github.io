@@ -1,0 +1,63 @@
+---
+import Base from '../layouts/Base.astro';
+import { useTranslations } from '../i18n';
+
+const t = useTranslations('en');
+---
+
+<Base locale="en" title={`404 — ${t.meta.title}`} description={t.notFound.body}>
+  <main class="wrap">
+    <p class="code">404</p>
+    <h1 class="title">{t.notFound.title}</h1>
+    <p class="body">{t.notFound.body}</p>
+    <a class="back" href="/">{t.notFound.back}</a>
+  </main>
+</Base>
+
+<style>
+  .wrap {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--pad-x);
+  }
+
+  .code {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    margin-bottom: 1rem;
+  }
+
+  .body {
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .back {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.8rem 1.7rem;
+    transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+  }
+
+  .back:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>

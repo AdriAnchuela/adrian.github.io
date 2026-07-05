@@ -1,0 +1,108 @@
+---
+import { useTranslations, type Locale } from '../i18n';
+import { experience } from '../data/experience';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section id="experience" class="section">
+  <div class="container">
+    <div class="reveal head">
+      <p class="kicker">{t.experience.kicker}</p>
+      <h2 class="heading">{t.experience.heading}</h2>
+    </div>
+    <div class="timeline">
+      {experience.map((item) => (
+        <article class="item reveal">
+          <div class="meta">
+            <p class="period">{item.period[locale]}</p>
+            <p class="company">{item.company}</p>
+          </div>
+          <div class="content">
+            <h3 class="role">{item.role[locale]}</h3>
+            <ul class="bullets">
+              {item.bullets.map((b) => <li>{b[locale]}</li>)}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .head {
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .item {
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    gap: clamp(1.5rem, 4vw, 4rem);
+    padding-block: clamp(2rem, 4vw, 3rem);
+    border-top: 1px solid var(--line);
+  }
+
+  .period {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .company {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .role {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    line-height: 1.1;
+    margin-bottom: 1.4rem;
+  }
+
+  .bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .bullets li {
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.75;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  @media (max-width: 900px) {
+    .item {
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+  }
+</style>

@@ -1,0 +1,89 @@
+---
+import { useTranslations, type Locale } from '../i18n';
+import { education } from '../data/education';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section id="education" class="section">
+  <div class="container">
+    <div class="reveal head">
+      <p class="kicker">{t.education.kicker}</p>
+      <h2 class="heading">{t.education.heading}</h2>
+    </div>
+    <div class="grid">
+      {education.map((item) => (
+        <article class="card reveal">
+          <p class="years">{item.years}</p>
+          <h3 class="degree">{item.degree[locale]}</h3>
+          <p class="school">{item.school}</p>
+          <p class="note">{item.note[locale]}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .head {
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .card {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: clamp(1.6rem, 3vw, 2.4rem);
+    background: var(--bg-2);
+    transition: border-color 0.25s var(--ease);
+  }
+
+  .card:hover {
+    border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  }
+
+  .years {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin-bottom: 1.1rem;
+  }
+
+  .degree {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.55rem;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .school {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .note {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  @media (max-width: 720px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

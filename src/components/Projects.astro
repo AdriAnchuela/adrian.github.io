@@ -1,0 +1,263 @@
+---
+import { useTranslations, type Locale } from '../i18n';
+import { projects } from '../data/projects';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section id="work" class="section">
+  <div class="container">
+    <div class="reveal head">
+      <p class="kicker">{t.work.kicker}</p>
+      <h2 class="heading">{t.work.heading}</h2>
+    </div>
+    <div class="list">
+      {projects.map((project, i) => (
+        <details class="project reveal" name="projects">
+          <summary>
+            <span class="num">{String(i + 1).padStart(2, '0')}</span>
+            <span class="main">
+              {project.featured && <span class="badge">{t.work.featured}</span>}
+              <span class="title">{project.title}</span>
+              <span class="client">{project.client[locale]}</span>
+              <span class="desc">{project.desc[locale]}</span>
+              <span class="chips">
+                {project.stack.map((s) => <span class="chip">{s}</span>)}
+              </span>
+            </span>
+            <span class="marker" aria-hidden="true">+</span>
+          </summary>
+          <div class="detail">
+            <div class="detail-grid">
+              <div>
+                <p class="detail-label">{t.work.problemLabel}</p>
+                <p class="problem">{project.problem[locale]}</p>
+                <div class="tags">
+                  {project.tags.map((tag) => <span class="chip chip-accent">{tag}</span>)}
+                </div>
+              </div>
+              <div>
+                <p class="detail-label">{t.work.architectureLabel}</p>
+                <ul class="arch">
+                  {project.architecture.map((a) => <li>{a[locale]}</li>)}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .head {
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .list {
+    border-top: 1px solid var(--line);
+  }
+
+  .project {
+    border-bottom: 1px solid var(--line);
+  }
+
+  summary {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 4.5rem 1fr auto;
+    align-items: start;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    padding-block: clamp(1.8rem, 4vw, 2.6rem);
+    cursor: pointer;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .num {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    padding-top: 0.5rem;
+    transition: color 0.2s var(--ease);
+  }
+
+  .project:hover .num,
+  .project[open] .num {
+    color: var(--accent);
+  }
+
+  .main {
+    display: block;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.18rem 0.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .title {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 4vw, 2.7rem);
+    line-height: 1.05;
+    margin-bottom: 0.45rem;
+    transition: color 0.2s var(--ease);
+  }
+
+  .project:hover .title {
+    color: var(--accent);
+  }
+
+  .client {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+  }
+
+  .desc {
+    display: block;
+    max-width: 36rem;
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.7;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1rem;
+  }
+
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.22rem 0.65rem;
+  }
+
+  .chip-accent {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+
+  .marker {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    color: var(--muted);
+    padding-top: 0.35rem;
+    transition: transform 0.3s var(--ease), color 0.2s var(--ease);
+  }
+
+  .project[open] .marker {
+    transform: rotate(45deg);
+    color: var(--accent);
+  }
+
+  .detail {
+    overflow: hidden;
+  }
+
+  .project[open] .detail {
+    animation: slide-open 0.45s var(--ease);
+  }
+
+  @keyframes slide-open {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: clamp(1.8rem, 4vw, 3.5rem);
+    padding: 0 0 clamp(2rem, 4vw, 3rem) 4.5rem;
+  }
+
+  .detail-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .problem {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.8;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1.4rem;
+  }
+
+  .arch {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .arch li {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.75;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .arch li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  @media (max-width: 900px) {
+    summary {
+      grid-template-columns: 1fr auto;
+    }
+    .num {
+      display: none;
+    }
+    .detail-grid {
+      grid-template-columns: 1fr;
+      padding-left: 0;
+    }
+  }
+</style>
