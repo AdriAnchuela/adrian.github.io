@@ -13,11 +13,11 @@ const t = useTranslations(locale);
   <div class="container">
     <div class="reveal head">
       <p class="kicker">{t.work.kicker}</p>
-      <h2 class="heading">{t.work.heading}</h2>
+      <h2 class="heading" data-decrypt>{t.work.heading}</h2>
     </div>
     <div class="list">
       {projects.map((project, i) => (
-        <details class="project reveal" name="projects">
+        <details class="project reveal" name="projects" id={`project-${project.slug}`}>
           <summary>
             <span class="num">{String(i + 1).padStart(2, '0')}</span>
             <span class="main">

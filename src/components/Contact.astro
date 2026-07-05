@@ -12,7 +12,7 @@ const t = useTranslations(locale);
 <section id="contact" class="section">
   <div class="container">
     <p class="kicker reveal">{t.contact.kicker}</p>
-    <h2 class="cta reveal">{t.contact.heading}</h2>
+    <h2 class="cta reveal" data-decrypt>{t.contact.heading}</h2>
     <p class="lead reveal">{t.contact.lead}</p>
     <a class="email reveal" href={`mailto:${site.email}`}>{site.email}</a>
     <div class="row reveal">

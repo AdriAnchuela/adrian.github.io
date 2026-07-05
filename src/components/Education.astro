@@ -13,7 +13,7 @@ const t = useTranslations(locale);
   <div class="container">
     <div class="reveal head">
       <p class="kicker">{t.education.kicker}</p>
-      <h2 class="heading">{t.education.heading}</h2>
+      <h2 class="heading" data-decrypt>{t.education.heading}</h2>
     </div>
     <div class="grid">
       {education.map((item) => (
@@ -44,7 +44,8 @@ const t = useTranslations(locale);
     border-radius: 6px;
     padding: clamp(1.6rem, 3vw, 2.4rem);
     background: var(--bg-2);
-    transition: border-color 0.25s var(--ease);
+    transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+    will-change: transform;
   }
 
   .card:hover {

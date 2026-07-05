@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from './Nav.astro';
+import Explorer from './Explorer.astro';
+import StatusBar from './StatusBar.astro';
 import Hero from './Hero.astro';
 import Clients from './Clients.astro';
 import About from './About.astro';
@@ -20,14 +22,29 @@ const t = useTranslations(locale);
 
 <Base locale={locale} title={t.meta.title} description={t.meta.description}>
   <Nav locale={locale} />
-  <main>
-    <Hero locale={locale} />
-    <Clients locale={locale} />
-    <About locale={locale} />
-    <Projects locale={locale} />
-    <Experience locale={locale} />
-    <Education locale={locale} />
-    <Contact locale={locale} />
-  </main>
-  <Footer locale={locale} />
+  <div class="shell">
+    <Explorer />
+    <div class="document">
+      <main>
+        <Hero locale={locale} />
+        <Clients locale={locale} />
+        <About locale={locale} />
+        <Projects locale={locale} />
+        <Experience locale={locale} />
+        <Education locale={locale} />
+        <Contact locale={locale} />
+      </main>
+      <Footer locale={locale} />
+    </div>
+  </div>
+  <StatusBar />
 </Base>
+
+<style>
+  @media (min-width: 1100px) {
+    .shell {
+      display: grid;
+      grid-template-columns: 15rem minmax(0, 1fr);
+    }
+  }
+</style>

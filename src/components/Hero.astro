@@ -9,12 +9,12 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<section class="hero">
+<section class="hero" id="hero">
   <canvas id="neural-bg" aria-hidden="true"></canvas>
   <div class="container">
     <p class="availability">
       <span class="dot" aria-hidden="true"></span>
-      {t.hero.availability}
+      <span data-decrypt>{t.hero.availability}</span>
     </p>
     <h1 class="name">
       {t.hero.name.split(' ').map((word, i, words) => (

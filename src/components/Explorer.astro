@@ -1,0 +1,129 @@
+---
+import { projects } from '../data/projects';
+---
+
+<nav class="explorer" aria-label="Explorer">
+  <p class="root">~/portfolio</p>
+  <ul class="tree">
+    <li><a href="#hero" data-spy-link="hero"><span class="ext">md</span>README.md</a></li>
+    <li><a href="#clients" data-spy-link="clients"><span class="ext">log</span>clients.log</a></li>
+    <li><a href="#about" data-spy-link="about"><span class="ext">md</span>about.md</a></li>
+    <li>
+      <p class="folder" data-spy-link="work"><span class="caret">▾</span>projects/</p>
+      <ul>
+        {projects.map((p) => (
+          <li>
+            <a class="nested" href={`#project-${p.slug}`} data-open-project>
+              <span class="ext">md</span>{p.slug}.md
+            </a>
+          </li>
+        ))}
+      </ul>
+    </li>
+    <li><a href="#experience" data-spy-link="experience"><span class="ext">md</span>experience.md</a></li>
+    <li><a href="#education" data-spy-link="education"><span class="ext">md</span>education.md</a></li>
+    <li><a href="#contact" data-spy-link="contact"><span class="ext">sh</span>contact.sh</a></li>
+  </ul>
+</nav>
+
+<style>
+  .explorer {
+    display: none;
+  }
+
+  @media (min-width: 1100px) {
+    .explorer {
+      display: block;
+      position: sticky;
+      top: 4.25rem;
+      height: calc(100vh - 4.25rem - 2rem);
+      overflow-y: auto;
+      padding: 1.6rem 1.4rem;
+      border-right: 1px solid var(--line-soft);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+    }
+  }
+
+  .root {
+    color: var(--muted);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1.1rem;
+  }
+
+  .tree,
+  .tree ul {
+    list-style: none;
+  }
+
+  .tree > li {
+    margin-bottom: 0.15rem;
+  }
+
+  .tree a,
+  .folder {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.32rem 0.55rem;
+    border-radius: 4px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.15s var(--ease), background-color 0.15s var(--ease);
+  }
+
+  .tree a:hover {
+    color: var(--text);
+    background: var(--line-soft);
+  }
+
+  .tree a.active,
+  .folder.active {
+    color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  .ext {
+    font-size: 0.52rem;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 0 0.25rem;
+    line-height: 1.5;
+    opacity: 0.8;
+    flex-shrink: 0;
+  }
+
+  a.active .ext {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+
+  .folder {
+    cursor: default;
+  }
+
+  .caret {
+    font-size: 0.55rem;
+    opacity: 0.7;
+  }
+
+  .nested {
+    margin-left: 1.1rem;
+  }
+</style>
+
+<script>
+  // Open the corresponding <details> before the browser scrolls to it
+  document.querySelectorAll('[data-open-project]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const id = link.getAttribute('href')?.slice(1);
+      if (id) document.getElementById(id)?.setAttribute('open', '');
+    });
+  });
+</script>

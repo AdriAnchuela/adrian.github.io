@@ -51,6 +51,8 @@ const canonical = locale === 'en' ? enUrl : esUrl;
   <body>
     <slot />
     <script>
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       const revealed = document.querySelectorAll('.reveal');
       const observer = new IntersectionObserver(
         (entries) => {
@@ -64,6 +66,80 @@ const canonical = locale === 'en' ? enUrl : esUrl;
         { threshold: 0.12 }
       );
       revealed.forEach((el) => observer.observe(el));
+
+      // ── Decrypt effect: headlines resolve from scrambled characters ──
+      const GLYPHS = '!<>-_\\/[]{}—=+*^?#01';
+      function decrypt(el: HTMLElement) {
+        const original = el.textContent ?? '';
+        if (!original.trim()) return;
+        let frame = 0;
+        const perChar = 3;
+        const step = () => {
+          frame++;
+          const resolved = Math.floor(frame / perChar);
+          if (resolved >= original.length) {
+            el.textContent = original;
+            return;
+          }
+          el.textContent =
+            original.slice(0, resolved) +
+            [...original.slice(resolved)]
+              .map((c) => (c === ' ' ? ' ' : GLYPHS[(Math.random() * GLYPHS.length) | 0]))
+              .join('');
+          requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }
+
+      if (!reduced) {
+        const decryptObs = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                decrypt(entry.target as HTMLElement);
+                decryptObs.unobserve(entry.target);
+              }
+            }
+          },
+          { threshold: 0.4 }
+        );
+        document.querySelectorAll<HTMLElement>('[data-decrypt]').forEach((el) => {
+          // Reserve layout: scrambled glyphs are same length as the target text
+          decryptObs.observe(el);
+        });
+      }
+
+      // ── Magnetic buttons ──
+      if (!reduced && matchMedia('(pointer: fine)').matches) {
+        const magnets = document.querySelectorAll<HTMLElement>(
+          '.btn, .cv, .visit, .lang, .theme-toggle'
+        );
+        magnets.forEach((el) => {
+          el.classList.add('magnetic');
+          el.addEventListener('mousemove', (e) => {
+            const r = el.getBoundingClientRect();
+            const x = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+            const y = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+            el.style.transform = `translate(${x * 4}px, ${y * 3}px)`;
+          });
+          el.addEventListener('mouseleave', () => {
+            el.style.transform = '';
+          });
+        });
+
+        // ── Subtle 3D tilt on cards ──
+        document.querySelectorAll<HTMLElement>('.card').forEach((card) => {
+          card.addEventListener('mousemove', (e) => {
+            const r = card.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width - 0.5;
+            const y = (e.clientY - r.top) / r.height - 0.5;
+            card.style.transform = `perspective(700px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
+          });
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+          });
+        });
+      }
     </script>
   </body>
 </html>

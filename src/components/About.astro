@@ -12,7 +12,7 @@ const t = useTranslations(locale);
   <div class="container grid">
     <div class="reveal">
       <p class="kicker">{t.about.kicker}</p>
-      <h2 class="heading">{t.about.heading}</h2>
+      <h2 class="heading" data-decrypt>{t.about.heading}</h2>
     </div>
     <div class="body reveal">
       {t.about.paragraphs.map((p) => <p class="para">{p}</p>)}

@@ -84,6 +84,19 @@ body {
   transition: background-color 0.35s var(--ease), color 0.35s var(--ease);
 }
 
+/* Room for the fixed status bar on desktop */
+@media (min-width: 1100px) {
+  body {
+    padding-bottom: 2rem;
+  }
+}
+
+/* Elements moved by the magnetic-hover script */
+.magnetic {
+  transition: transform 0.18s var(--ease);
+  will-change: transform;
+}
+
 a {
   color: inherit;
   text-decoration: none;
