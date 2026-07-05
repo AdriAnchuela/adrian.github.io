@@ -27,8 +27,8 @@ export const en = {
     kicker: 'About',
     heading: '$ whoami',
     paragraphs: [
-      'I am a computer engineer working at the intersection of full-stack development, cloud infrastructure and machine learning, with a focus on AI systems that hold up in production.',
-      'My work ranges from a military-grade AI platform for the Spanish Air Force to high-speed data infrastructure for some of Spain’s largest corporations — RTVE, Telefónica, Iberdrola — and conversational AI for Mapfre and Orange.',
+      'I trained as a computer engineer, on a foundation of mathematics, algorithms and logic — the part of computer science that does not change with the framework of the week.',
+      'Today I build AI systems end to end: retrieval pipelines, fine-tuned language models, evaluation loops and the cloud infrastructure they run on. Systems designed to hold up in production, not just in the demo.',
       'Outside of work I am drawn to quantitative finance, AI research and sport. My final degree project, MLMarketLens, brought all three together.',
     ],
     focusLabel: 'Focus',

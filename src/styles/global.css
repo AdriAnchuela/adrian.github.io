@@ -6,7 +6,7 @@
   --font-body: 'Inter Variable', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SF Mono', monospace;
 
-  --max-w: 1120px;
+  --max-w: 1260px;
   --pad-x: clamp(1.25rem, 5vw, 3rem);
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 
@@ -54,6 +54,24 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
+}
+
+/* Scale the whole type system up on large monitors */
+@media (min-width: 1700px) {
+  html {
+    font-size: 18px;
+  }
+  :root {
+    --max-w: 1400px;
+  }
+}
+@media (min-width: 2200px) {
+  html {
+    font-size: 20px;
+  }
+  :root {
+    --max-w: 1560px;
+  }
 }
 
 body {
@@ -139,7 +157,7 @@ button {
 .heading {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-size: clamp(2.3rem, 5vw, 4rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
   text-wrap: balance;

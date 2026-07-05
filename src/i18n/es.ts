@@ -29,8 +29,8 @@ export const es: UIDict = {
     kicker: 'Sobre mí',
     heading: '$ whoami',
     paragraphs: [
-      'Soy ingeniero informático y trabajo en la intersección del desarrollo full-stack, la infraestructura cloud y el machine learning, con el foco puesto en sistemas de IA que aguantan en producción.',
-      'Mi trabajo va desde una plataforma de IA de grado militar para el Ejército del Aire hasta infraestructura de datos de alta velocidad para algunas de las mayores corporaciones de España — RTVE, Telefónica, Iberdrola — e IA conversacional para Mapfre y Orange.',
+      'Me formé como ingeniero informático sobre una base de matemáticas, algoritmos y lógica — la parte de la informática que no cambia con el framework de la semana.',
+      'Hoy construyo sistemas de IA de principio a fin: pipelines de recuperación, modelos de lenguaje afinados, bucles de evaluación y la infraestructura cloud sobre la que corren. Sistemas pensados para aguantar en producción, no solo en la demo.',
       'Fuera del trabajo me atraen las finanzas cuantitativas, la investigación en IA y el deporte. Mi TFG, MLMarketLens, unió las tres cosas.',
     ],
     focusLabel: 'Enfoque',
