@@ -14,7 +14,8 @@ const t = useTranslations(locale);
   <div class="container">
     <p class="availability">
       <span class="dot" aria-hidden="true"></span>
-      <span data-decrypt>{t.hero.availability}</span>
+      <span class="dev-only" data-decrypt>{t.hero.availability}</span>
+      <span class="mkt-only" data-decrypt>{t.hero.availabilityMkt}</span>
     </p>
     <h1 class="name">
       {t.hero.name.split(' ').map((word, i, words) => (

@@ -17,6 +17,7 @@ export const es: UIDict = {
   },
   hero: {
     availability: 'Construyendo sistemas de IA en IBM',
+    availabilityMkt: 'Machine learning para los mercados',
     role: 'Data & AI Engineer',
     name: 'Adrián Anchuela',
     intro:
@@ -64,6 +65,18 @@ export const es: UIDict = {
   },
   clients: {
     kicker: 'Clientes y organizaciones',
+  },
+  markets: {
+    kicker: 'Mercados y quant',
+    heading: 'El mercado como dataset',
+    p1: 'Las finanzas cuantitativas son el punto donde se cruzan mis tres cosas favoritas: el código, las matemáticas y los mercados. Lo que empezó como investigación por mi cuenta en la universidad acabó siendo MLMarketLens, mi TFG.',
+    p2: 'Su tesis: los mercados se mueven por números y por narrativa. El sistema fusiona series temporales OHLCV con embeddings de sentimiento extraídos de noticias y redes sociales, y un modelo secuencial (LSTM + atención) aprende su comportamiento conjunto para predecir tendencias.',
+    signalLabel: 'Pipeline de señal',
+    signals: [
+      'Precio — series temporales OHLCV como columna vertebral cuantitativa',
+      'Narrativa — embeddings de sentimiento de noticias y redes sociales',
+      'Predicción — LSTM + atención sobre el espacio de features fusionado',
+    ],
   },
   experience: {
     kicker: 'Experiencia',

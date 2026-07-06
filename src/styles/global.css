@@ -101,6 +101,14 @@ body {
   will-change: transform;
 }
 
+/* Mode-dependent content: dev ([data-theme=dark]) vs market ([data-theme=warm]) */
+[data-theme='warm'] .dev-only {
+  display: none !important;
+}
+[data-theme='dark'] .mkt-only {
+  display: none !important;
+}
+
 a {
   color: inherit;
   text-decoration: none;

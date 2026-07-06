@@ -1,0 +1,215 @@
+---
+import { useTranslations, type Locale } from '../i18n';
+import { projects } from '../data/projects';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const mlm = projects.find((p) => p.slug === 'mlmarketlens')!;
+
+// Decorative sparkline points (viewBox 0 0 220 56)
+const spark = '0,44 11,41 22,45 33,38 44,40 55,33 66,36 77,28 88,31 99,24 110,27 121,20 132,24 143,16 154,19 165,12 176,15 187,9 198,12 209,6 220,8';
+---
+
+<section id="markets" class="section">
+  <div class="container grid">
+    <div class="reveal">
+      <p class="kicker">{t.markets.kicker}</p>
+      <h2 class="heading" data-decrypt>{t.markets.heading}</h2>
+      <p class="para">{t.markets.p1}</p>
+      <p class="para">{t.markets.p2}</p>
+      <div class="signals">
+        <p class="signals-label">{t.markets.signalLabel}</p>
+        <ul>
+          {t.markets.signals.map((s) => <li>{s}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <aside class="panel reveal" aria-label="MLMarketLens">
+      <div class="panel-head">
+        <span class="sym">$MLMKT</span>
+        <span class="delta">▲ {mlm.title}</span>
+      </div>
+      <svg class="spark" viewBox="0 0 220 56" preserveAspectRatio="none" aria-hidden="true">
+        <polyline points={spark} fill="none" stroke="var(--up)" stroke-width="1.5" />
+        <polyline
+          points={`${spark} 220,56 0,56`}
+          fill="var(--up)"
+          opacity="0.07"
+          stroke="none"
+        />
+      </svg>
+      <p class="panel-client">{mlm.client[locale]}</p>
+      <p class="panel-desc">{mlm.desc[locale]}</p>
+      <div class="chips">
+        {mlm.stack.map((s) => <span class="chip">{s}</span>)}
+      </div>
+      {mlm.link && (
+        <a class="visit" href={mlm.link} target="_blank" rel="noopener noreferrer">
+          {t.work.visit} <span aria-hidden="true">↗</span>
+        </a>
+      )}
+    </aside>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  .para {
+    color: var(--muted);
+    font-size: 1.02rem;
+    line-height: 1.85;
+    margin-bottom: 1.4rem;
+  }
+
+  .heading {
+    margin-bottom: 2rem;
+  }
+
+  .signals {
+    margin-top: 2.4rem;
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .signals-label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .signals ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .signals li {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .signals li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  .panel {
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--bg-2);
+    padding: clamp(1.4rem, 3vw, 2rem);
+    position: sticky;
+    top: 6rem;
+  }
+
+  .panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .sym {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    color: var(--text);
+  }
+
+  .delta {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    color: var(--up);
+  }
+
+  .spark {
+    display: block;
+    width: 100%;
+    height: 64px;
+    margin-bottom: 1.4rem;
+  }
+
+  .panel-client {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.7rem;
+  }
+
+  .panel-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    margin-bottom: 1.2rem;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.22rem 0.65rem;
+  }
+
+  .visit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    border-radius: 999px;
+    padding: 0.6rem 1.3rem;
+    transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+  }
+
+  .visit:hover {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    .panel {
+      position: static;
+    }
+  }
+</style>

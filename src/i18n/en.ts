@@ -15,6 +15,7 @@ export const en = {
   },
   hero: {
     availability: 'Building AI systems at IBM',
+    availabilityMkt: 'Machine learning for the markets',
     role: 'Data & AI Engineer',
     name: 'Adrian Anchuela',
     intro:
@@ -62,6 +63,18 @@ export const en = {
   },
   clients: {
     kicker: 'Clients & organisations',
+  },
+  markets: {
+    kicker: 'Markets & quant',
+    heading: 'The market as a dataset',
+    p1: 'Quantitative finance is where my three favourite things meet: code, mathematics and markets. What began as independent research during university became MLMarketLens, my final degree project.',
+    p2: 'Its thesis: markets move on numbers and on narrative. The system fuses OHLCV time-series with sentiment embeddings extracted from news and social media, and a sequence model (LSTM + attention) learns their joint behaviour to forecast trends.',
+    signalLabel: 'Signal pipeline',
+    signals: [
+      'Price action — OHLCV time-series as the quantitative backbone',
+      'Narrative — sentiment embeddings from news and social media',
+      'Forecast — LSTM + attention over the fused feature space',
+    ],
   },
   experience: {
     kicker: 'Experience',
