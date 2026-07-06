@@ -10,6 +10,10 @@
   --pad-x: clamp(1.25rem, 5vw, 3rem);
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 
+  /* Market colors (ticker, candles) */
+  --up: #34d17b;
+  --down: #e05252;
+
   color-scheme: dark;
 }
 

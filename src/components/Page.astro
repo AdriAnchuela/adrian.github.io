@@ -4,6 +4,7 @@ import Nav from './Nav.astro';
 import Explorer from './Explorer.astro';
 import StatusBar from './StatusBar.astro';
 import Hero from './Hero.astro';
+import Ticker from './Ticker.astro';
 import Clients from './Clients.astro';
 import About from './About.astro';
 import Projects from './Projects.astro';
@@ -27,6 +28,7 @@ const t = useTranslations(locale);
     <div class="document">
       <main>
         <Hero locale={locale} />
+        <Ticker />
         <Clients locale={locale} />
         <About locale={locale} />
         <Projects locale={locale} />

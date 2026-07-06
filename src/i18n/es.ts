@@ -13,7 +13,7 @@ export const es: UIDict = {
     contact: 'Contacto',
     switchLang: 'English',
     switchLangShort: 'EN',
-    switchTheme: 'Cambiar tema de color',
+    switchTheme: 'Cambiar modo: dev / mercado',
   },
   hero: {
     availability: 'Construyendo sistemas de IA en IBM',

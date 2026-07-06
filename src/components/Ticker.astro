@@ -1,0 +1,99 @@
+---
+// Decorative ticker tape, visible only in market mode ([data-theme='warm']).
+// Symbols reference real projects/skills; the deltas are playful set dressing.
+const items = [
+  { sym: 'TITAN', delta: 14.2 },
+  { sym: 'MLMKT', delta: 8.31 },
+  { sym: 'RAG', delta: 21.4 },
+  { sym: 'LLM', delta: 13.37 },
+  { sym: 'ASPERA', delta: 9.9 },
+  { sym: 'PYTHON', delta: 4.04 },
+  { sym: 'K8S', delta: -1.21 },
+  { sym: 'WATSONX', delta: 7.7 },
+  { sym: 'VECTORDB', delta: 11.8 },
+  { sym: 'DPO', delta: 5.55 },
+  { sym: 'CLOUD', delta: 3.3 },
+  { sym: 'NLP', delta: 6.28 },
+];
+---
+
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    {[...items, ...items].map((it) => (
+      <span class="item">
+        <span class="sym">{it.sym}</span>
+        <span class={it.delta >= 0 ? 'up' : 'down'}>
+          {it.delta >= 0 ? '▲' : '▼'} {Math.abs(it.delta).toFixed(2)}%
+        </span>
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .ticker {
+    overflow: hidden;
+    border-top: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
+    background: var(--bg-2);
+    padding-block: 0.55rem;
+  }
+
+  :global([data-theme='dark']) .ticker {
+    display: none;
+  }
+
+  .track {
+    display: flex;
+    width: max-content;
+    animation: marquee 36s linear infinite;
+  }
+
+  .ticker:hover .track {
+    animation-play-state: paused;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding-inline: 1.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .item::after {
+    content: '·';
+    color: var(--line);
+    margin-left: 1.6rem;
+  }
+
+  .sym {
+    color: var(--text);
+  }
+
+  .up {
+    color: var(--up);
+  }
+
+  .down {
+    color: var(--down);
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .track {
+      animation: none;
+    }
+  }
+</style>

@@ -6,43 +6,58 @@ const { label } = Astro.props;
 ---
 
 <button class="theme-toggle" data-theme-toggle aria-label={label} title={label}>
-  <span class="swatch swatch-warm" aria-hidden="true"></span>
-  <span class="swatch swatch-dark" aria-hidden="true"></span>
+  <span class="opt opt-mkt" aria-hidden="true">
+    <span class="swatch swatch-warm"></span>MKT
+  </span>
+  <span class="opt opt-dev" aria-hidden="true">
+    <span class="swatch swatch-dark"></span>DEV
+  </span>
 </button>
 
 <style>
   .theme-toggle {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 2.1rem;
     height: 2.1rem;
+    padding-inline: 0.85rem;
     border: 1px solid var(--line);
     border-radius: 999px;
-    transition: border-color 0.2s var(--ease);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
   }
 
   .theme-toggle:hover {
     border-color: var(--muted);
+    color: var(--text);
+  }
+
+  .opt {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .swatch {
-    width: 0.8rem;
-    height: 0.8rem;
+    width: 0.62rem;
+    height: 0.62rem;
     border-radius: 50%;
   }
 
-  /* Show the accent of the theme you would switch to */
   .swatch-warm {
     background: #f0a84a;
   }
   .swatch-dark {
     background: #4af0c4;
   }
-  :global([data-theme='dark']) .swatch-dark {
+
+  /* Show the mode you would switch to */
+  :global([data-theme='dark']) .opt-dev {
     display: none;
   }
-  :global([data-theme='warm']) .swatch-warm {
+  :global([data-theme='warm']) .opt-mkt {
     display: none;
   }
 </style>

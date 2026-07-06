@@ -7,8 +7,10 @@
     <span class="path" id="status-path">portfolio/README.md</span>
   </div>
   <div class="right">
-    <span>UTF-8</span>
-    <span>TypeScript</span>
+    <span class="dev-only">UTF-8</span>
+    <span class="dev-only">TypeScript</span>
+    <span class="mkt-only tick">$AA</span>
+    <span class="mkt-only up">▲ 24/7</span>
     <span>Madrid, ES</span>
   </div>
 </div>
@@ -54,6 +56,21 @@
 
   .glyph {
     font-size: 0.72rem;
+  }
+
+  .tick {
+    color: var(--text);
+  }
+
+  .up {
+    color: var(--up);
+  }
+
+  :global([data-theme='warm']) .dev-only {
+    display: none;
+  }
+  :global([data-theme='dark']) .mkt-only {
+    display: none;
   }
 </style>
 

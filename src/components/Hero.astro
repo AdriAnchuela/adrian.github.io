@@ -233,37 +233,44 @@ const t = useTranslations(locale);
 <script>
   const canvas = document.getElementById('neural-bg') as HTMLCanvasElement | null;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const narrow = matchMedia('(max-width: 720px)').matches;
 
-  if (canvas && !reduced && !narrow) {
+  // In narrow viewports the canvas is display:none via CSS; the
+  // IntersectionObserver below keeps the loop idle while it's hidden.
+  if (canvas && !reduced) {
     const ctx = canvas.getContext('2d')!;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const LINK_DIST = 150;
     const MOUSE_DIST = 220;
+    const CANDLE_W = 16;
+    const BODY_W = 9;
+    const STEP_FRAMES = 40;
 
     let width = 0;
     let height = 0;
     let nodes: { x: number; y: number; vx: number; vy: number }[] = [];
+    let candles: { o: number; h: number; l: number; c: number }[] = [];
+    let frame = 0;
     let accent = '#4af0c4';
+    let mode: 'neural' | 'market' =
+      document.documentElement.dataset.theme === 'warm' ? 'market' : 'neural';
     let mouse: { x: number; y: number } | null = null;
     let running = true;
     let raf = 0;
 
-    const readAccent = () => {
-      accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+    const css = (name: string) =>
+      getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+    const readTheme = () => {
+      accent = css('--accent');
+      mode = document.documentElement.dataset.theme === 'warm' ? 'market' : 'neural';
     };
-    readAccent();
-    new MutationObserver(readAccent).observe(document.documentElement, {
+    readTheme();
+    new MutationObserver(readTheme).observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['data-theme'],
     });
 
-    const resize = () => {
-      width = canvas.offsetWidth;
-      height = canvas.offsetHeight;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const initNeural = () => {
       const count = Math.min(110, Math.floor((width * height) / 16000));
       nodes = Array.from({ length: count }, () => ({
         x: Math.random() * width,
@@ -271,6 +278,34 @@ const t = useTranslations(locale);
         vx: (Math.random() - 0.5) * 0.35,
         vy: (Math.random() - 0.5) * 0.35,
       }));
+    };
+
+    const candleCount = () => Math.ceil(width / CANDLE_W) + 1;
+
+    const initMarket = () => {
+      candles = [];
+      let price = 100;
+      for (let i = 0; i < candleCount(); i++) {
+        const o = price;
+        const c = o + (Math.random() - 0.48) * 3.2;
+        candles.push({
+          o,
+          c,
+          h: Math.max(o, c) + Math.random() * 1.4,
+          l: Math.min(o, c) - Math.random() * 1.4,
+        });
+        price = c;
+      }
+    };
+
+    const resize = () => {
+      width = canvas.offsetWidth;
+      height = canvas.offsetHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      initNeural();
+      initMarket();
     };
     resize();
     addEventListener('resize', resize);
@@ -293,11 +328,7 @@ const t = useTranslations(locale);
       { threshold: 0 }
     ).observe(canvas);
 
-    function tick() {
-      raf = 0;
-      if (!running) return;
-      ctx.clearRect(0, 0, width, height);
-
+    function drawNeural() {
       for (const n of nodes) {
         n.x += n.vx;
         n.y += n.vy;
@@ -353,7 +384,78 @@ const t = useTranslations(locale);
         ctx.fill();
       }
       ctx.globalAlpha = 1;
+    }
 
+    function drawMarket() {
+      frame++;
+      const up = css('--up');
+      const down = css('--down');
+
+      // The last candle keeps "trading"; a new one opens every STEP_FRAMES
+      const cur = candles[candles.length - 1];
+      cur.c += (Math.random() - 0.5) * 0.9;
+      cur.h = Math.max(cur.h, cur.c);
+      cur.l = Math.min(cur.l, cur.c);
+      if (frame % STEP_FRAMES === 0) {
+        candles.push({ o: cur.c, h: cur.c, l: cur.c, c: cur.c });
+        while (candles.length > candleCount()) candles.shift();
+      }
+
+      let min = Infinity;
+      let max = -Infinity;
+      for (const k of candles) {
+        if (k.l < min) min = k.l;
+        if (k.h > max) max = k.h;
+      }
+      const pad = (max - min) * 0.25 || 1;
+      const y = (v: number) => height - ((v - (min - pad)) / (max - min + pad * 2)) * height;
+      const startX = width - candles.length * CANDLE_W;
+
+      ctx.lineWidth = 1;
+      for (let i = 0; i < candles.length; i++) {
+        const k = candles[i];
+        const x = startX + i * CANDLE_W + CANDLE_W / 2;
+        const color = k.c >= k.o ? up : down;
+
+        ctx.globalAlpha = 0.28;
+        ctx.strokeStyle = color;
+        ctx.beginPath();
+        ctx.moveTo(x, y(k.h));
+        ctx.lineTo(x, y(k.l));
+        ctx.stroke();
+
+        ctx.globalAlpha = 0.3;
+        ctx.fillStyle = color;
+        const top = y(Math.max(k.o, k.c));
+        const bodyH = Math.max(1.5, Math.abs(y(k.o) - y(k.c)));
+        ctx.fillRect(x - BODY_W / 2, top, BODY_W, bodyH);
+      }
+
+      // Trading-terminal crosshair following the cursor
+      if (mouse) {
+        ctx.globalAlpha = 0.3;
+        ctx.strokeStyle = accent;
+        ctx.setLineDash([5, 6]);
+        ctx.beginPath();
+        ctx.moveTo(0, mouse.y);
+        ctx.lineTo(width, mouse.y);
+        ctx.moveTo(mouse.x, 0);
+        ctx.lineTo(mouse.x, height);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.globalAlpha = 0.6;
+        ctx.fillStyle = accent;
+        ctx.fillRect(mouse.x - 2.5, mouse.y - 2.5, 5, 5);
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    function tick() {
+      raf = 0;
+      if (!running) return;
+      ctx.clearRect(0, 0, width, height);
+      if (mode === 'market') drawMarket();
+      else drawNeural();
       raf = requestAnimationFrame(tick);
     }
     raf = requestAnimationFrame(tick);

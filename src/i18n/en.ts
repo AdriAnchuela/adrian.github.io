@@ -11,7 +11,7 @@ export const en = {
     contact: 'Contact',
     switchLang: 'Español',
     switchLangShort: 'ES',
-    switchTheme: 'Toggle color theme',
+    switchTheme: 'Switch mode: dev / market',
   },
   hero: {
     availability: 'Building AI systems at IBM',
