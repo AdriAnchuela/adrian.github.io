@@ -23,7 +23,8 @@
   --bg: #080a0d;
   --bg-2: #0d1017;
   --text: #e8eaee;
-  --muted: #7e8792;
+  --text-2: #c2c7ce;
+  --muted: #868f9a;
   --line: rgba(232, 234, 238, 0.1);
   --line-soft: rgba(232, 234, 238, 0.06);
   --accent: #4af0c4;
@@ -36,7 +37,8 @@
   --bg: #0e0d0b;
   --bg-2: #16130e;
   --text: #eae6dd;
-  --muted: #928a7b;
+  --text-2: #c9c3b6;
+  --muted: #9a9280;
   --line: rgba(234, 230, 221, 0.1);
   --line-soft: rgba(234, 230, 221, 0.06);
   --accent: #f0a84a;
