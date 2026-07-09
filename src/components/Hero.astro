@@ -86,7 +86,7 @@ const mlm = projects.find((p) => p.slug === 'mlmarketlens')!;
     z-index: 1;
   }
 
-  @media (prefers-reduced-motion: reduce), (max-width: 720px) {
+  @media (prefers-reduced-motion: reduce) {
     #neural-bg {
       display: none;
     }
@@ -394,8 +394,8 @@ const mlm = projects.find((p) => p.slug === 'mlmarketlens')!;
   const canvas = document.getElementById('neural-bg') as HTMLCanvasElement | null;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // In narrow viewports the canvas is display:none via CSS; the
-  // IntersectionObserver below keeps the loop idle while it's hidden.
+  // Node/candle counts scale with viewport area, so this stays light on
+  // mobile; the IntersectionObserver pauses the loop while off-screen.
   if (canvas && !reduced) {
     const ctx = canvas.getContext('2d')!;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
