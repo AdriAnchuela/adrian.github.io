@@ -24,6 +24,12 @@ export const en = {
     ctaCv: 'Download CV',
     location: 'Madrid, Spain',
   },
+  current: {
+    label: 'Current project',
+    live: 'Live',
+    desc: 'ML pipeline forecasting market trends from price action and sentiment.',
+    cta: 'Open project',
+  },
   about: {
     kicker: 'About',
     heading: '$ whoami',

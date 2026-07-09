@@ -1,12 +1,14 @@
 ---
 import { useTranslations, type Locale } from '../i18n';
 import { site } from '../data/site';
+import { projects } from '../data/projects';
 
 interface Props {
   locale: Locale;
 }
 const { locale } = Astro.props;
 const t = useTranslations(locale);
+const mlm = projects.find((p) => p.slug === 'mlmarketlens')!;
 ---
 
 <section class="hero" id="hero">
@@ -17,6 +19,25 @@ const t = useTranslations(locale);
       <span class="dev-only" data-decrypt>{t.hero.availability}</span>
       <span class="mkt-only" data-decrypt>{t.hero.availabilityMkt}</span>
     </p>
+
+    <a
+      class="current"
+      href={mlm.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${t.current.label}: ${mlm.title}`}
+    >
+      <div class="current-head">
+        <span class="current-label">
+          <span class="live-dot" aria-hidden="true"></span>{t.current.label}
+        </span>
+        <span class="current-live">{t.current.live}</span>
+      </div>
+      <div class="current-title">{mlm.title}</div>
+      <p class="current-desc">{t.current.desc}</p>
+      <span class="current-cta">{t.current.cta} <span aria-hidden="true">↗</span></span>
+    </a>
+
     <h1 class="name">
       {t.hero.name.split(' ').map((word, i, words) => (
         <span class:list={['word', { accent: i > 0 }]}>
@@ -98,6 +119,144 @@ const t = useTranslations(locale);
     }
     50% {
       opacity: 0.35;
+    }
+  }
+
+  /* Floating "current project" card — anchored, not a real popup */
+  .current {
+    position: absolute;
+    top: -2rem;
+    right: 0;
+    z-index: 2;
+    display: block;
+    width: 18rem;
+    max-width: 34vw;
+    padding: 1.15rem 1.25rem 1.1rem;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: color-mix(in srgb, var(--bg-2) 90%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    animation: card-in 0.6s var(--ease) 0.55s forwards;
+    transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+  }
+
+  .current:hover {
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+    box-shadow: 0 26px 60px -28px rgba(0, 0, 0, 0.95);
+  }
+
+  @keyframes card-in {
+    from {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .current-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .current-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 var(--accent);
+    animation: live 2s ease infinite;
+  }
+
+  @keyframes live {
+    0% {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent);
+    }
+    70% {
+      box-shadow: 0 0 0 6px transparent;
+    }
+    100% {
+      box-shadow: 0 0 0 0 transparent;
+    }
+  }
+
+  .current-live {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    border-radius: 999px;
+    padding: 0.14rem 0.5rem;
+  }
+
+  .current-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 0.5rem;
+  }
+
+  .current-desc {
+    color: var(--text-2);
+    font-size: 0.8rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .current-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .current-cta span {
+    transition: transform 0.25s var(--ease);
+  }
+
+  .current:hover .current-cta span {
+    transform: translate(2px, -2px);
+  }
+
+  @media (max-width: 1200px) {
+    .current {
+      position: static;
+      transform: none;
+      opacity: 1;
+      animation: none;
+      width: 100%;
+      max-width: 22rem;
+      margin-bottom: clamp(1.75rem, 5vw, 2.75rem);
+    }
+    .current:hover {
+      box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.9);
     }
   }
 

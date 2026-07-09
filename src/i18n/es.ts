@@ -26,6 +26,12 @@ export const es: UIDict = {
     ctaCv: 'Descargar CV',
     location: 'Madrid, España',
   },
+  current: {
+    label: 'Proyecto actual',
+    live: 'En vivo',
+    desc: 'Pipeline de ML que predice tendencias de mercado con precio y sentimiento.',
+    cta: 'Abrir proyecto',
+  },
   about: {
     kicker: 'Sobre mí',
     heading: '$ whoami',
