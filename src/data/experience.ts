@@ -55,12 +55,12 @@ export const experience: ExperienceItem[] = [
   },
   {
     role: { en: 'Early Career & Research', es: 'Inicios e investigación' },
-    company: 'UPM · Independent',
+    company: 'UAH · Independent',
     period: { en: '2019 — 2023', es: '2019 — 2023' },
     bullets: [
       {
-        en: 'Completed intensive cybersecurity training at UPM — covering network security, ethical hacking and enterprise risk assessment.',
-        es: 'Completé una formación intensiva en ciberseguridad en la UPM — seguridad de redes, hacking ético y evaluación de riesgos corporativos.',
+        en: 'Completed intensive cybersecurity training at UAH — covering network security, ethical hacking and enterprise risk assessment.',
+        es: 'Completé una formación intensiva en ciberseguridad en la UAH — seguridad de redes, hacking ético y evaluación de riesgos corporativos.',
       },
       {
         en: 'Provided academic support in mathematics to first-year engineering students, reinforcing analytical thinking and problem-solving fundamentals.',

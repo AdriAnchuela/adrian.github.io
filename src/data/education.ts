@@ -3,7 +3,7 @@ import type { EducationItem } from './types';
 export const education: EducationItem[] = [
   {
     degree: { en: 'Computer Engineering', es: 'Ingeniería Informática' },
-    school: 'Universidad Politécnica de Alcalá de Henares',
+    school: 'Universidad de Alcalá',
     years: '2019 — 2024',
     note: {
       en: 'Final project: MLMarketLens — neural network model for stock and fund trend prediction using NLP and social media sentiment analysis.',
@@ -12,7 +12,7 @@ export const education: EducationItem[] = [
   },
   {
     degree: { en: 'Cybersecurity Training', es: 'Formación en Ciberseguridad' },
-    school: 'Universidad Politécnica de Alcalá',
+    school: 'Universidad de Alcalá',
     years: '2022',
     note: {
       en: 'Intensive program in network security, ethical hacking, penetration testing and enterprise risk assessment.',

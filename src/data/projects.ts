@@ -43,8 +43,8 @@ export const projects: Project[] = [
     title: 'MLMarketLens',
     link: 'https://mlmarketlens.com/',
     client: {
-      en: 'Final degree project — UPM',
-      es: 'Trabajo de fin de grado — UPM',
+      en: 'Final degree project — UAH',
+      es: 'Trabajo de fin de grado — UAH',
     },
     desc: {
       en: 'Neural pipeline predicting financial market trends by fusing historical price action with real-time sentiment extracted from social media and news.',
